@@ -12,6 +12,8 @@ const cuota3 = 0.05;
 const cuota6 = 0.1;
 const cuota12 = 0.15;
 
+let opcion;
+
 function add(product, price){
         if (product , price) {
             total += price;
