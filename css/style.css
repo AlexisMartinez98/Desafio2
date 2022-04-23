@@ -1,7 +1,7 @@
 body{
     margin: 0;
     padding: 0;
-    background: rgba(0, 0, 0, 0.705) url(/src/multimedia/imagenes/sale.png);
+    background: rgba(0, 0, 0, 0.705) url(../src/multimedia/imagenes/sale.png);
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
