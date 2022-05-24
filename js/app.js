@@ -15,9 +15,16 @@ function cargarEventListeners() {
     // elimina productos del carrito 
     carrito.addEventListener ('click', eliminarProducto);
 
+    //mostrar local storage
+    document.addEventListener('DOMContentLoaded', ()=> {
+        articulosCarrito = JSON.parse(localStorage.getItem('carrito')) || [];
+
+        carritoHTML();
+    })
+
     // vaciar carrito
     vaciarCarrioBtn.addEventListener('click', ()=>{
-        articulosCarrito = []; //reseteamos el array
+        articulosCarrito = [] & localStorage.clear(); //reseteamos el array
 
         limpiarHTML(); //limpia el html
     });
@@ -33,7 +40,12 @@ function agregarCurso(e) {
 
         leerDatosCurso(cursoSeleccionado)
     }
-    alert(`Se agrego ${e.target.parentElement.parentElement.querySelector('h4').textContent} al carrito`);
+    // libreria
+    Swal.fire({
+        icon: 'success',
+        title: 'Se agrego el articulo',
+        text: `${e.target.parentElement.parentElement.querySelector('h4').textContent}`,
+    })
 }
 
 //elimina un productor del carrito
@@ -112,7 +124,14 @@ function carritoHTML() {
         `;
         //agrega el html del carrito en el tbody
         contenedorCarrito.appendChild(row);
-    })
+    });
+
+    // local storage
+    carritoStorage();
+}
+
+function carritoStorage() {
+    localStorage.setItem('carrito', JSON.stringify(articulosCarrito));
 }
 
 //eliminar los cursos del tbody
