@@ -3,7 +3,11 @@ const carrito = document.querySelector('#carrito');
 const contenedorCarrito = document.querySelector('#lista-carrito tbody');
 const vaciarCarrioBtn = document.querySelector('#vaciar-carrito');
 const listaCursos = document.querySelector('#lista-cursos');
+let precioTotal = document.querySelector('.precioTotal')
+
 let articulosCarrito = [];
+let totalCard = 0;
+
 
 
 cargarEventListeners();
@@ -76,6 +80,10 @@ function leerDatosCurso(curso) {
         cantidad: 1
     }
 
+    totalCard = parseFloat(totalCard) + parseFloat(infoCurso.precio);
+    totalCard = totalCard.toFixed(2)
+    console.log(totalCard)
+
     //revisa si un elemento ya existe en el carrito
     const existe = articulosCarrito.some( curso => curso.id === infoCurso.id );
     if (existe) {
@@ -124,6 +132,7 @@ function carritoHTML() {
         `;
         //agrega el html del carrito en el tbody
         contenedorCarrito.appendChild(row);
+        precioTotal.innerHTML = totalCard;
     });
 
     // local storage
