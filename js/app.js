@@ -79,10 +79,9 @@ function leerDatosCurso(curso) {
         id: curso.querySelector('a').getAttribute('data-id'),
         cantidad: 1
     }
-
+    
     totalCard = parseFloat(totalCard) + parseFloat(infoCurso.precio);
     totalCard = totalCard.toFixed(2)
-    console.log(totalCard)
 
     //revisa si un elemento ya existe en el carrito
     const existe = articulosCarrito.some( curso => curso.id === infoCurso.id );
@@ -149,3 +148,4 @@ function limpiarHTML() {
         contenedorCarrito.removeChild(contenedorCarrito.firstChild);
     }
 }
+
